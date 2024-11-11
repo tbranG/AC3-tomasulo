@@ -9,6 +9,11 @@
 
 typedef uint8_t u8;
 
+typedef struct {
+    char* label;
+    u8 value;
+} Register;
+
 typedef enum {
     ADD = 1,
     SUB = 2,
@@ -27,9 +32,10 @@ typedef enum {
 
 typedef struct {
     InstructionType iType;
-    u8 r1;
-    u8 r2;
-    u8 r3;
+    char* r1; //registrador de destino
+    char* r2;
+    char* r3;
+    u8 a; //valor imediato para instruções load e store
 } Instruction;
 
 #endif

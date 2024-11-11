@@ -1,5 +1,5 @@
-#include"shared.h"
-#include"parser.h"
+#include"headers/shared.h"
+#include"headers/parser.h"
 
 //define um tamanho máximo para as instruções de 30 caracteres. Necessário para usar o fgets
 #define MAX_INST_LENGTH 30
@@ -43,20 +43,21 @@ Instruction parseInstruction(char* instructionStr){
     if(op == SW || op == LW){
         //TODO: terminar
     } else {
-        u8 r1 = secToken[1] - 48;
+        char* r1 = &secToken[1];
         secToken = strtok(0, ",");
 
-        u8 r2 = secToken[1] - 48;
+        char* r2 = &secToken[1];
         secToken = strtok(0, ",");
 
-        u8 r3 = secToken[1] - 48;
+        char* r3 = &secToken[1];
         secToken = NULL;
 
         Instruction inst = {
             op,
             r1,
             r2,
-            r3
+            r3,
+            0
         };
 
         return inst;
