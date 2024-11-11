@@ -1,4 +1,4 @@
-#include"utils.h"
+#include"shared.h"
 #include"parser.h"
 
 //define um tamanho máximo para as instruções de 30 caracteres. Necessário para usar o fgets
