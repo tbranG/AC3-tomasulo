@@ -7,7 +7,7 @@
 char** readInstructionFile(FILE* inputFile)
 {
     if (inputFile == NULL || feof(inputFile)) {
-        printf("ERROR: Couldn't parse instruction file.");
+        printf("ERROR: Não foi possível ler o arquivo de instuções.");
         exit(0);
     }
 
@@ -16,8 +16,13 @@ char** readInstructionFile(FILE* inputFile)
 
     do {
         char* inst = malloc(MAX_INST_LENGTH * sizeof(char));
-        fgets(inst, MAX_INST_LENGTH, inputFile);
+        char* buffer = fgets(inst, MAX_INST_LENGTH, inputFile);
 
+        if (buffer == NULL){
+            printf("ERROR: Um erro ocorreu na leitura de uma instrução. Abortando.");
+            exit(0);
+        };
+        
         instList[numInst] = inst;
         instList = realloc(instList, (++numInst + 1) * sizeof(char*));
 

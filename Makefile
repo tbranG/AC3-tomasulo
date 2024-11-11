@@ -8,4 +8,4 @@ all: parser.o main.o
 	gcc parser.o main.o -o main.exe
 
 clean:
-	rm *.o main
+	rm *.o main.exe
