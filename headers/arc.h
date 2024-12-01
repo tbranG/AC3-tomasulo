@@ -25,10 +25,11 @@ typedef struct {
 typedef struct {
   u8 entry; // identificação
   bool busy;
-  Instruction inst;
+  Instruction* inst;
   InstructionState state;
-  u8 dest;  // registrador de destino
+  Register* dest;  // registrador de destino
   u8 value; // valor final
+  ReservationStation* station; // estação que está executando a instrução
 } ReorderBuffer;
 
 Register *getRegisterByLabel(char *label, Register *rList);
@@ -45,7 +46,7 @@ void setStation(ReservationStation *station, Instruction inst,
 /// @brief Carrega uma instruçãn no buffer de reordenação
 /// @param buffer referência do buffer
 /// @param inst instrução para carregar
-void setReordBuffer(ReorderBuffer *buffer, Instruction inst);
+void setReordBuffer(ReorderBuffer *buffer, Instruction *inst);
 
 /// @brief TODO: adicionar descrição
 /// @param bank referência da estrutura

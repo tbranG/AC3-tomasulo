@@ -19,6 +19,21 @@ char *opCodeToString(InstructionType op) {
   }
 }
 
+char *instructionStateToString(InstructionState state) {
+  switch (state) {
+  case DISPATCH:
+    return "dispatch";
+  case COMMIT:
+    return "commit  ";
+  case EXECUTE:
+    return "execute  ";
+  case WRITE_BACK:
+    return "write back";
+  default:
+    return "        ";
+  }
+}
+
 void trim(char *s) {
   int i;
 

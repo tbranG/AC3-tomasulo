@@ -54,7 +54,20 @@ void setStation(ReservationStation *station, Instruction inst,
   }
 }
 
-void setReordBuffer(ReorderBuffer *buffer, Instruction inst) {
+void setReordBuffer(ReorderBuffer *buffer, Instruction *inst) {
   assert(buffer != NULL,
          "Nao foi possivel definir o buffer, seu valor eh igual a NULL");
+
+  buffer->busy = true;
+  buffer->inst = inst;
+  buffer->state = 0;
+  buffer->dest = inst->r1;
+  buffer->value = 0;
+}
+
+void setRegbank(RegisterBank *bank, u8 entry){
+  assert(bank != NULL, "Nao foi possivel definir o estado do registrador, seu valor eh igual a NULL");
+
+  bank->busy = true;
+  bank->reord = entry;
 }

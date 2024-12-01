@@ -31,10 +31,10 @@ typedef enum {
 } InstructionType;
 
 typedef enum {
-  DISPATCH,
-  EXECUTE,
-  WRITE_BACK,
-  COMMIT,
+  DISPATCH = 1,
+  EXECUTE = 2,
+  WRITE_BACK = 3,
+  COMMIT = 4,
 } InstructionState;
 
 typedef struct {
@@ -46,5 +46,6 @@ typedef struct {
 } Instruction;
 
 char *opCodeToString(InstructionType op);
+char *instructionStateToString(InstructionState state);
 void trim(char *s);
 #endif
